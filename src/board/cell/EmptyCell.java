@@ -1,5 +1,4 @@
 package board.cell;
 
-public class EmptyCell
-{
+public class EmptyCell {
 }
