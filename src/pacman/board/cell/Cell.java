@@ -4,7 +4,7 @@ import pacman.util.Position;
 import pacman.util.ScoreManager;
 
 public abstract class Cell {
-    private final int size = 32;
+    public static final int SIZE = 32;
 
     private Position position;
 
