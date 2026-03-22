@@ -10,6 +10,7 @@ public abstract class Entity {
     private Position position;
     private int speed;
     private Direction direction;
+
     private Image sprite;
 
     public Entity(Position position, int speed, Direction direction) {
@@ -24,9 +25,11 @@ public abstract class Entity {
 
     public abstract void move(Board board);
 
-
     public abstract void draw();
 
+    public Image getSprite() {
+        return this.sprite;
+    }
 
     public void hide() {
         if (this.sprite != null) {
@@ -43,7 +46,6 @@ public abstract class Entity {
     public int getCol() {
         return (this.position.getX() + Cell.SIZE / 2) / Cell.SIZE;
     }
-
     public int getRow() {
         return (this.position.getY() + Cell.SIZE / 2) / Cell.SIZE;
     }
@@ -62,6 +64,7 @@ public abstract class Entity {
     public int getSpeed() {
         return this.speed;
     }
+
     public Direction getDirection() {
         return this.direction;
     }
@@ -74,9 +77,6 @@ public abstract class Entity {
         return (this.position.getX() % Cell.SIZE == 0) && (this.position.getY() % Cell.SIZE == 0);
     }
 
-    /**
-     * Overí či môže entita urobiť krok v danom smere.
-     */
     protected boolean canMove(Direction dir, Board board) {
         int nextCol = this.getCol() + dir.dx();
         int nextRow = this.getRow() + dir.dy();
