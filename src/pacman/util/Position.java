@@ -1,9 +1,9 @@
-package util;
+package pacman.util;
 
 import java.util.Objects;
 
 /**
- * Immutable 2D position within the game grid.
+ * Immutable 2D position within the pacman.game grid.
  */
 public class Position {
     private final int x;

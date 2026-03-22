@@ -1,4 +1,4 @@
-package board.cell;
+package pacman.board.cell;
 
 public class EmptyCell {
 }

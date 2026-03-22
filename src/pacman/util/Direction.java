@@ -1,4 +1,4 @@
-package util;
+package pacman.util;
 
 /**
  * Represents movement directions with their corresponding

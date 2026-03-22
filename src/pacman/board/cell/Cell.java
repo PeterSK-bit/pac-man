@@ -1,19 +1,19 @@
-package board.cell;
+package pacman.board.cell;
 
-import util.Position;
-import util.ScoreManager;
+import pacman.util.Position;
+import pacman.util.ScoreManager;
 
 public abstract class Cell {
     private final int size = 32;
 
     private Position position;
 
-    public Cell(int x, int y) {
-        this.position = new Position(x, y);
-    }
-
     public Cell(Position position) {
         this.position = position;
+    }
+
+    public Cell(int x, int y) {
+        this(new Position(x, y));
     }
 
     public int getY() {

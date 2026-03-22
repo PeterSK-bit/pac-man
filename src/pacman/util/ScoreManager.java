@@ -1,4 +1,4 @@
-package util;
+package pacman.util;
 
 public class ScoreManager {
 }

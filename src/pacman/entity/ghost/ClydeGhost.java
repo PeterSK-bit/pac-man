@@ -1,4 +1,4 @@
-package entity.ghost;
+package pacman.entity.ghost;
 
 public class ClydeGhost {
 }

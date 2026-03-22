@@ -1,4 +1,4 @@
-package entity;
+package pacman.entity;
 
 public class PacMan {
 }
