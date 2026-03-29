@@ -15,7 +15,7 @@ public class Position {
      * @param y row index (0 = topmost)
      */
     public Position(int x, int y) {
-        if  (x <= 0 || y <= 0) {
+        if  (x < 0 || y < 0) {
             throw new IllegalArgumentException("x and y should not be negative");
         }
 
