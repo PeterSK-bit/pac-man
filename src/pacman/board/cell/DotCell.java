@@ -54,7 +54,7 @@ public class DotCell extends Cell {
         }
 
         this.isEaten = true;
-        this.sprite[1].makeVisible();
+        this.sprite[1].makeInvisible();
         scoreManager.addDotPoints();
     }
 
