@@ -12,15 +12,15 @@ public abstract class Cell {
         this.position = position;
     }
 
-    public Cell(int x, int y) {
-        this(new Position(x, y));
+    public Cell(int row, int column) {
+        this(new Position(column, row));
     }
 
-    public int getY() {
+    public int getRow() {
         return this.position.getY();
     }
 
-    public int getX() {
+    public int getCol() {
         return this.position.getX();
     }
 
