@@ -1,12 +1,35 @@
 package pacman.game;
 
 import fri.shapesge.Manager;
+import pacman.board.Board;
+import pacman.entity.PacMan;
+import pacman.entity.ghost.Ghost;
+import pacman.util.GameState;
+import pacman.util.Position;
+import pacman.util.ScoreManager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Game {
+    private final Board board;
+    private final ScoreManager scoreManager;
+    private final PacMan pacMan;
+    private final List<Ghost> ghosts;
+    private GameState gameState;
 
     public Game() {
         Manager manager = new Manager();
         manager.manageObject(this);
+
+        this.board =  new Board();
+        this.pacMan = new PacMan(new Position(0, 0));
+        this.scoreManager = new ScoreManager();
+        this.ghosts = new ArrayList<>();
+        this.gameState = GameState.RUNNING;
+
+        // TESTING
+        this.ghosts.add(new )
     }
 
     public void up() {
@@ -30,6 +53,12 @@ public class Game {
     }
 
     public void tick() {
-        System.out.println("tick event triggered");
+        this.pacMan.render();
+        this.pacMan.update();
+
+        for (Ghost ghost : this.ghosts) {
+            ghost.render();
+            ghost.update();
+        }
     }
 }

@@ -41,10 +41,7 @@ public abstract class Ghost extends Entity {
         // TODO after implementation of graph
     }
 
-    @Override
-    public void draw() {
-        this.getSprite().changePosition(this.getPosition().getX(), this.getPosition().getY());
-    }
+
 
     public void setFrightened() {
         if (this.state != GhostState.RESPAWNING) {
@@ -62,7 +59,6 @@ public abstract class Ghost extends Entity {
     public void onCaught() {
         this.state = GhostState.RESPAWNING;
         this.setDirection(Direction.NONE);
-        this.draw();
         this.updateSprite();
         this.moveToHome();
     }
@@ -71,6 +67,7 @@ public abstract class Ghost extends Entity {
         if (this.getCol() == this.homeCol && this.getRow() == this.homeRow) {
             this.respawn();
         } else {
+            System.out.println();
             // TODO pathfinding using graph
         }
     }

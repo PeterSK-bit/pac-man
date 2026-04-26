@@ -7,6 +7,7 @@ import pacman.util.Position;
 import fri.shapesge.Image;
 
 public abstract class Entity {
+    public static final int SIZE = 32;
     private Position position;
     private int speed;
     private Direction direction;
@@ -24,11 +25,15 @@ public abstract class Entity {
     }
 
     public abstract void move(Board board);
-
-    public abstract void draw();
+    public abstract void update();
+    public abstract void render();
 
     public Image getSprite() {
         return this.sprite;
+    }
+
+    public void setSprite(Image sprite) {
+        this.sprite = sprite;
     }
 
     public void hide() {
@@ -48,13 +53,6 @@ public abstract class Entity {
     }
     public int getRow() {
         return (this.position.getY() + Cell.SIZE / 2) / Cell.SIZE;
-    }
-
-    public int getX() {
-        return this.position.getX();
-    }
-    public int getY() {
-        return this.position.getY();
     }
 
     public Position getPosition() {
