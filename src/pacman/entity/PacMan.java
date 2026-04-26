@@ -25,6 +25,24 @@ public class PacMan extends Entity {
     @Override
     public void render() {
         this.getSprite().changeImage(FRAMES[this.frameIndex]);
+        switch (this.getDirection()) {
+            case RIGHT:
+                this.getSprite().changeAngle(0);
+                break;
+            case LEFT:
+                this.getSprite().changeAngle(180);
+                break;
+            case UP:
+                this.getSprite().changeAngle(-90);
+                break;
+            case DOWN:
+                this.getSprite().changeAngle(90);
+                break;
+            case NONE:
+                System.out.println("PacMan has no direction!");
+                break;
+        }
+
     }
 
     @Override

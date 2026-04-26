@@ -44,19 +44,27 @@ public class Game {
     }
 
     public void up() {
-        System.out.println("up event triggered");
+        if (this.gameState == GameState.RUNNING) {
+            this.pacMan.setDirection(Direction.UP);
+        }
     }
 
     public void down() {
-        System.out.println("down event triggered");
+        if (this.gameState == GameState.RUNNING) {
+            this.pacMan.setDirection(Direction.DOWN);
+        }
     }
 
     public void left() {
-        System.out.println("left event triggered");
+        if (this.gameState == GameState.RUNNING) {
+            this.pacMan.setDirection(Direction.LEFT);
+        }
     }
 
     public void right() {
-        System.out.println("right event triggered");
+        if (this.gameState == GameState.RUNNING) {
+            this.pacMan.setDirection(Direction.RIGHT);
+        }
     }
 
     public void escape() {
