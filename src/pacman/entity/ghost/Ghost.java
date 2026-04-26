@@ -6,7 +6,7 @@ import pacman.util.Direction;
 import pacman.util.GhostState;
 
 public abstract class Ghost extends Entity {
-    public static final int CELL_SIZE = 32;
+    public static final int CELL_SIZE = 20;
     private static final int SPEED = 2;
     private static final int FRIGHTENED_TICKS = 200;
     public static final int NUM_FRAMES = 2;
@@ -49,7 +49,6 @@ public abstract class Ghost extends Entity {
         if (this.state != GhostState.RESPAWNING) {
             this.state = GhostState.FRIGHTENED;
             this.frightenedTimer = FRIGHTENED_TICKS;
-            this.updateSprite();
         }
     }
 
@@ -66,7 +65,7 @@ public abstract class Ghost extends Entity {
     }
 
     private void moveToHome() {
-        if (this.getCol() == this.homeCol && this.getRow() == this.homeRow) {
+        if (this.boardPosition().getX() == this.homeCol && this.boardPosition().getY() == this.homeRow) {
             this.respawn();
         } else {
             System.out.println();

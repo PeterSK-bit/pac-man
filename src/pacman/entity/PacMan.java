@@ -3,7 +3,6 @@ package pacman.entity;
 import fri.shapesge.Image;
 import pacman.board.Board;
 import pacman.util.Direction;
-import pacman.util.Position;
 
 public class PacMan extends Entity {
     private Direction pendingDirection;
@@ -12,13 +11,13 @@ public class PacMan extends Entity {
     private static final String[] FRAMES = {"resources/pacman/0.png", "resources/pacman/1.png", "resources/pacman/2.png"};
     private int frameIndex;
 
-    public PacMan(Position position) {
-        super(position, 5, Direction.RIGHT);
+    public PacMan(int row, int col) {
+        super(row, col, 5, Direction.RIGHT);
         this.powerMode = false;
         this.powerTimer = 0;
         this.frameIndex = 0;
         this.setSprite(new Image(FRAMES[this.frameIndex]));
-        this.getSprite().changePosition(position.getX(), position.getY());
+        this.getSprite().changePosition(this.windowPosition().getX(), this.windowPosition().getY());
         this.getSprite().makeVisible();
     }
 

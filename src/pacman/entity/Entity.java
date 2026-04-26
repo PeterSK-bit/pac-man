@@ -1,27 +1,28 @@
 package pacman.entity;
 
 import pacman.board.Board;
-import pacman.board.cell.Cell;
 import pacman.util.Direction;
 import pacman.util.Position;
 import fri.shapesge.Image;
 
 public abstract class Entity {
-    public static final int SIZE = 32;
-    private Position position;
+    public static final int SIZE = 20;
+    private Position boardPosition;
+    private Position windowPosition;
     private int speed;
     private Direction direction;
 
     private Image sprite;
 
     public Entity(Position position, int speed, Direction direction) {
-        this.position = position;
+        this.boardPosition = position;
+        this.windowPosition = new Position(position.getX() * SIZE, position.getY() * SIZE + 40);
         this.speed = speed;
         this.direction = direction;
     }
 
     public Entity(int startCol, int startRow, int speed, Direction direction) {
-        this(new Position(startCol * Cell.SIZE, startCol * Cell.SIZE), speed, direction);
+        this(new Position(startCol, startRow), speed, direction);
     }
 
     public abstract void move(Board board);
@@ -48,15 +49,12 @@ public abstract class Entity {
         }
     }
 
-    public int getCol() {
-        return (this.position.getX() + Cell.SIZE / 2) / Cell.SIZE;
-    }
-    public int getRow() {
-        return (this.position.getY() + Cell.SIZE / 2) / Cell.SIZE;
+    public Position boardPosition() {
+        return this.boardPosition;
     }
 
-    public Position getPosition() {
-        return this.position;
+    public Position windowPosition() {
+        return this.windowPosition;
     }
 
     public int getSpeed() {
@@ -71,13 +69,9 @@ public abstract class Entity {
         this.direction = direction;
     }
 
-    protected boolean isAlignedToGrid() {
-        return (this.position.getX() % Cell.SIZE == 0) && (this.position.getY() % Cell.SIZE == 0);
-    }
-
     protected boolean canMove(Direction dir, Board board) {
-        int nextCol = this.getCol() + dir.dx();
-        int nextRow = this.getRow() + dir.dy();
+        int nextCol = this.boardPosition.getX() + dir.dx();
+        int nextRow = this.boardPosition.getY() + dir.dy();
         return board.isWalkable(nextRow, nextCol);
     }
 }

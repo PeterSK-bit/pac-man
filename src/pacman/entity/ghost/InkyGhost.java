@@ -12,7 +12,7 @@ public class InkyGhost extends Ghost {
     public InkyGhost(int startCol, int startRow, Direction direction) {
         super(startCol, startRow, direction);
         this.setSprite(new Image(String.format("%s/%s%d.png", SPRITE_DIR, this.getDirection().name(), this.frameIndex)));
-        this.getSprite().changePosition(startCol * CELL_SIZE, startRow * CELL_SIZE);
+        this.getSprite().changePosition(this.windowPosition().getX(), this.windowPosition().getY());
         this.getSprite().makeVisible();
     }
 

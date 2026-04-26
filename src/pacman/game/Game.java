@@ -1,5 +1,6 @@
 package pacman.game;
 
+import fri.shapesge.Image;
 import fri.shapesge.Manager;
 import pacman.board.Board;
 import pacman.entity.PacMan;
@@ -10,7 +11,6 @@ import pacman.entity.ghost.InkyGhost;
 import pacman.entity.ghost.PinkyGhost;
 import pacman.util.Direction;
 import pacman.util.GameState;
-import pacman.util.Position;
 import pacman.util.ScoreManager;
 
 import java.util.ArrayList;
@@ -22,22 +22,29 @@ public class Game {
     private final PacMan pacMan;
     private final List<Ghost> ghosts;
     private GameState gameState;
+    private Image bg;
 
     public Game() {
         Manager manager = new Manager();
         manager.manageObject(this);
 
+        this.bg = new Image("resources/map.png");
+        this.bg.changePosition(0, 40);
+        this.bg.makeVisible();
+
         this.board =  new Board();
-        this.pacMan = new PacMan(new Position(0, 0));
+        this.pacMan = new PacMan(1, 1);
         this.scoreManager = new ScoreManager();
         this.ghosts = new ArrayList<>();
 
-
         // TESTING ------------------
-        this.ghosts.add(new PinkyGhost(4, 0, Direction.DOWN));
-        this.ghosts.add(new BlinkyGhost(4, 4, Direction.RIGHT));
-        this.ghosts.add(new ClydeGhost(4, 8, Direction.UP));
-        this.ghosts.add(new InkyGhost(4, 12, Direction.LEFT));
+        this.ghosts.add(new BlinkyGhost(3, 1, Direction.RIGHT));
+        this.ghosts.add(new PinkyGhost(5, 1, Direction.DOWN));
+        this.ghosts.add(new ClydeGhost(7, 1, Direction.UP));
+        this.ghosts.add(new InkyGhost(9, 1, Direction.LEFT));
+
+        this.ghosts.add(new BlinkyGhost(11, 1, Direction.LEFT));
+        this.ghosts.get(4).setFrightened();
         // --------------------------
 
         this.gameState = GameState.RUNNING;
