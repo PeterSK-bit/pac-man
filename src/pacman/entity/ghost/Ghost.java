@@ -6,8 +6,10 @@ import pacman.util.Direction;
 import pacman.util.GhostState;
 
 public abstract class Ghost extends Entity {
+    public static final int CELL_SIZE = 32;
     private static final int SPEED = 2;
     private static final int FRIGHTENED_TICKS = 200;
+    public static final int NUM_FRAMES = 2;
 
     private GhostState state;
     private final int homeCol;
